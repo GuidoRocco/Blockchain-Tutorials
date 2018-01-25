@@ -1,0 +1,31 @@
+/**
+ * Model File (.cto) 
+ */
+
+namespace org.acme.model 
+
+asset Book identified by book_id 
+{
+  o String book_id 
+  o String book_title 
+  o String book_author 
+  o String book_publ_age 
+  --> Owner owner 
+} 
+
+participant Owner identified by owner_id 
+{ 
+  o String owner_id 
+  o String first_name 
+  o String last_name 
+  o String owner_address 
+  o String[] books_owned 
+} 
+
+transaction Exchange_Books 
+{ 
+  o String transaction_id 
+  --> Owner old_owner 
+  --> Owner new_owner 
+  --> Book book_to_exchange 
+} 
