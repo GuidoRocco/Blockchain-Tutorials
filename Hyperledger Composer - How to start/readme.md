@@ -1,4 +1,7 @@
+
 # Hyperledger Composer - How to start 
+
+> Warning. I'm working on this repo (it is not complete and can have errors) 
 
 In this tutorial we will start by building our first blockchain using Hyperledger Composer. Hyperledger Composer is an application development framework developed by Hyperledger Fabric, a project hosted by the Linux Foundation that aims to build enterprise-level blockchains. 
 
@@ -50,6 +53,100 @@ Now copy the content of the model file into the console.
 
 
 ![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20How%20to%20start/images/Picture_4.png) 
+
+
+The model file is composed by sets of JSON-like parts. The syntax for defining an asset and a participant is the same: we must use the keywords "identified by" to provide a primary key in order to find the element in the world state. The syntax is respectively 
+
+> asset <name_asset> identified by <name_asset_identifier> 
+
+> participant <name_participant> identified by <name_participant_identifier> 
+
+In the brackets we can define variables and references. A variable is defined by the "o" sign, while references are defined by the "-->" sign. In our example, we decided to identify each book by a book id, which is anything that can univocally identify a book in our network. 
+
+Transactions in the model file are identified only by their name, so we don't put an identifier in order to specify them. We defined the transaction Exchange_Books providing three references, since we will change the ownership of the books and we want the world state to change accordingly. 
+We click then on "Update" in order to update the code in our platform. 
+
+Now we have to create a script file in order to manage the transaction. Script files are written in JavaScript, so we recommend a thorough study of the language before starting to use Hyperledger Composer. 
+We create a script file named "exchange_books.js". We then copy the content of the exchange_books file in the code folder of this GitHub repo's tutorial. 
+At this point, we should have something like this: 
+
+![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20How%20to%20start/images/Picture_5.png) 
+
+The script file is just a JavaScript file used to describe our network. One difference that we point out are the first three lines of the script file: 
+
+> Script file for the Exchange_Books transaction 
+ 
+ > @param {org.acme.model.Exchange_Books} ec - Instance of book exchange 
+ 
+ > @transaction 
+ 
+ The @param and the @transaction part are compulsory: the @param sets the transaction that is handled by the script file, while ec is the instance of the transaction that is called in the script file. The @transaction tag let Composer know that we are handling a transaction. 
+ 
+ Finally, we add the permissions file in the same way. We should get something like this: 
+ 
+ 
+ ![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20How%20to%20start/images/Picture_6.png) 
+ 
+ 
+ The permission file describes the permissions for our network in a JSON-like formatting. Let us analyze infurther detail the syntax. The file is composed by rules: each rules define some actions that a user can or cannot do. Possible actions are the following: 
+ 
+ - READ 
+ 
+ Specifies if the user can read the chaincode and/or the world state. 
+ 
+ - CREATE 
+ 
+ Specifies if the user can create new files (chaincode). 
+ 
+ - UPDATE 
+ 
+ Specifies if the user can update the chaincode and/or the world state. 
+ 
+
+ - DELETE 
+ 
+ Specifies if the user can delete parts of the chaincode and/or the world state. 
+ 
+ 
+ 
+ 
+ The parts of our rule are the following: 
+ 
+ - DESCRIPTION 
+ 
+ It is a brief description of the permission, made in order to better undestanding it. It can be any string. 
+ 
+ - PARTICIPANT 
+ 
+ This field specifies the participant in the world state. The default participant registry in Hyperledger Composer is "org.acme.model.<Participant>", where <Participant> is the name we have given to the participants of our network. 
+  
+  - OPERATION 
+  
+  This field specifies the operation that is handled by the rule. The operation is chosen from the actions defined aboce (create, read, update, delete). 
+  
+  - RESOURCE 
+  
+  This is the asset registry of the resource that is handled by the rule. 
+  
+  - ACTION 
+  
+  It can be allow (we allow the participant to pursue the operation on the resource) or deny (we deny the participant to pursue the operation on the resource). 
+  
+
+
+We are now ready to test our network. Go to the "Test" section by clicking the button on the upper left of the screen. You will get something like that: 
+
+
+ ![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20How%20to%20start/images/Picture_7.png) 
+ 
+ 
+ We can then create new participants and assets, that will be added in the world state (respectively, in the participant registry and in the asset registry). If we click on "Submit Transaction", we can test the transactions defined by our chaincode. 
+ 
+ 
+  ![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20How%20to%20start/images/Picture_8.png) 
+  
+
+You're now ready to do your own experimentations with Hyperledger Composer. Congratulations! 
 
 
 
