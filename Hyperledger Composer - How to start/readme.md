@@ -1,8 +1,6 @@
 
 # Hyperledger Composer - How to start 
 
-> Warning. I'm working on this repo (it is not complete and can have errors) 
-
 In this tutorial we will start by building our first blockchain using Hyperledger Composer. Hyperledger Composer is an application development framework developed by Hyperledger Fabric, a project hosted by the Linux Foundation that aims to build enterprise-level blockchains. 
 
 We will suppose that Hyperledger Composer is installed on a Kubernetes cluster. The main page should look something like that. 
