@@ -59,7 +59,7 @@ The take_from_library script file works in a similar fashion. It does the follow
 
 ![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20Part%202/images/Picture_3.png) 
 
-
+Just create two new script files, each file with one of these wto transactions, and then click "Update" on the bottom left corner of the screen to update the chaincode. 
 Another file we added to the code is the **query file**. The query file is a file that represents all the possible queries to our network. Queries must be done via API calls: Hyperledger Composer provides a framework called *Hyperledger REST Server* that can handle remote calls. If you deployed Composer as a Kubernetes cluster on IBM Cloud following the first tutorial of our series, than you should have the Composer REST Server at the same public IP of Hyperledger Composer, but on the port 31090 instead of 31080. 
 Let us analyze what the query file is composed of. 
 
@@ -90,3 +90,11 @@ These are respectively the logical intersection and the logical union operator.
 - LIMIT 
 
 Sets the maximum number of results to be returned in a query. 
+
+Create a new query file and copy the content of the query file into the code folder of this repository in the console. Then, you can go into the test enviroment and try the updated network. 
+
+
+![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20Part%202/images/Picture_5.png) 
+
+
+Have fun with Hyperledger Composer! 
