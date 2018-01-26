@@ -1,0 +1,24 @@
+/**
+ * Query file for the used books network blockchain
+ */ 
+
+query Q1 
+{ 
+  description: "Select the books published after 1900" 
+  statement: 
+    SELECT org.acme.model.Book WHERE (book_publ_age >= 1900) 
+} 
+
+query Q2 
+{ 
+  description: "Select the books published between 1800 and 1900" 
+  statement: 
+    SELECT org.acme.model.Book WHERE ((book_publ_age >= 1800) AND (book_publ_age < 1900)) 
+} 
+
+query Q3 
+{ 
+  description: "Select the books published before 1800" 
+  statement: 
+    SELECT org.acme.model.Book WHERE (book_publ_age < 1800) 
+} 
