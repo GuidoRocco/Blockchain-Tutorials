@@ -67,3 +67,26 @@ Let us analyze what the query file is composed of.
 
 ![Node-RED Catalog](https://github.com/GuidoRocco/Blockchain-Tutorials/blob/master/Hyperledger%20Composer%20-%20Part%202/images/Picture_4.png) 
 
+
+Each query is composed by two distincts parts: the **description** and the **statement**. The description is a string that gives a brief description of the content of the query. It can be any string. The statement is a SQL-like query that select some elements of a particular asset or participant registry that satisfies certain conditions. 
+Among the operators of the statement, we can find the following: 
+
+- SELECT 
+
+Select the registry and the asset to be returned. It's a mandatory field. 
+
+- FROM 
+
+It can define a different field to query. 
+
+- WHERE 
+
+Specifies the condition that has to be met in order to satisfy the query. The condition is contained into brackets. 
+
+- AND, OR 
+
+These are respectively the logical intersection and the logical union operator. 
+
+- LIMIT 
+
+Sets the maximum number of results to be returned in a query. 
