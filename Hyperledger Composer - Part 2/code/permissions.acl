@@ -1,0 +1,37 @@
+/* Extends the permissions file of the "Hyperledger Composer - How to start" tutorial */ 
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+} 
+
+rule OwnersCannotModifyCode 
+{ 
+  description: "Deny the book owners the possibility of update the chaincode" 
+  participant: "org.acme.model.Owner" 
+  operation: CREATE, UPDATE, DELETE 
+  resource: "org.hyperledger.composer.system.**" 
+  action: DENY 
+} 
+
+rule LibraryCannotModifyCode 
+{
+  description: "Deny the libraries the possibility of update the chaincode" 
+  participant: "org.acme.model.Library" 
+  operation: CREATE, UPDATE, DELETE 
+  resource: "org.hyperledger.composer.system.**" 
+  action: DENY 
+} 
+
+  
